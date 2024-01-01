@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:id="@+id/buttonsContainer"
+        android:id="@+id/bottomButtons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/main_padding"
@@ -18,7 +18,7 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/btnCategories"
             style="@style/StyleNavButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
             android:layout_height="0dp" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btnFavorites"
             style="@style/StyleNavButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -40,8 +40,7 @@
             android:drawablePadding="10dp"
             android:text="Избранное"
             app:icon="@drawable/ic_favorites_heart"
-            app:iconGravity="textEnd"
-            app:iconSize="24dp" />
+            app:iconGravity="textEnd" />
 
     </LinearLayout>
 
