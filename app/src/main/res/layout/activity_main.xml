@@ -8,14 +8,15 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:id="@+id/bottomButtons"
+        android:id="@+id/layoutBottomButtons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/main_padding"
-        android:layout_marginEnd="@dimen/main_padding"
+        android:layout_marginHorizontal="@dimen/main_padding"
         android:layout_marginBottom="@dimen/main_padding_half"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <Button
             android:id="@+id/btnCategories"
@@ -24,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="@color/categories_btn_color"
-            android:text="Категории" />
+            android:text="@string/title_categories" />
 
         <View
             android:layout_width="4dp"
@@ -38,7 +39,7 @@
             android:layout_weight="1"
             android:backgroundTint="@color/favorites_btn_color"
             android:drawablePadding="10dp"
-            android:text="Избранное"
+            android:text="@string/title_favorites"
             app:icon="@drawable/ic_favorites_heart"
             app:iconGravity="textEnd" />
 
