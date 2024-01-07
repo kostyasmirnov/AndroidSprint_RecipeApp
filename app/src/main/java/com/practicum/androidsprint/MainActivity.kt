@@ -2,6 +2,8 @@ package com.practicum.androidsprint
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.add
+import androidx.fragment.app.commit
 import com.practicum.androidsprint.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -14,10 +16,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
 
         val initialFragment = CategoriesListFragment()
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
 
-        fragmentTransaction.replace(R.id.mainContainer, initialFragment)
-        fragmentTransaction.commit()
+        supportFragmentManager.commit {
+            setReorderingAllowed(true)
+            add<CategoriesListFragment>(R.id.mainContainer)
+        }
     }
 }
