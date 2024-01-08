@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_activity_background_color">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="224dp">
+
+        <ImageView
+            android:id="@+id/image_categories"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:src="@drawable/categories_background"
+            android:contentDescription="@string/title_categories"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_view_categories"
+            style="@style/StyleScreenHeader"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/main_padding"
+            android:layout_marginBottom="@dimen/main_padding"
+            android:background="@drawable/shape_header_rounded"
+            android:text="@string/title_categories"
+            android:textColor="@color/screen_name_color"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
