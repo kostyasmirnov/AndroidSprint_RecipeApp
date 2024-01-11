@@ -24,15 +24,12 @@ class MainActivity : AppCompatActivity() {
             add<CategoriesListFragment>(R.id.mainContainer)
         }
 
-        val btnCategories: Button = findViewById(R.id.btnCategories)
-        val btnFavorites: Button = findViewById(R.id.btnFavorites)
-
-        btnCategories.setOnClickListener {
+        binding.btnCategories.setOnClickListener {
             supportFragmentManager.commit {
                 replace(R.id.mainContainer, CategoriesListFragment())
             }
         }
-        btnFavorites.setOnClickListener {
+        binding.btnFavorites.setOnClickListener {
             supportFragmentManager.commit {
                 replace(R.id.mainContainer, FavoritesFragment())
             }

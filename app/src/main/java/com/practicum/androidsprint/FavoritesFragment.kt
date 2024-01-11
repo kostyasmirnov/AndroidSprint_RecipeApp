@@ -22,7 +22,7 @@ class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val textView = binding.FavoritesText
+        val textView = binding.tvFavorites
         textView.text
     }
 }
