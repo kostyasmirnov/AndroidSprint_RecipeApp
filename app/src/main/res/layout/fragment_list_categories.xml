@@ -11,7 +11,7 @@
         android:layout_height="224dp">
 
         <ImageView
-            android:id="@+id/image_categories"
+            android:id="@+id/ImageCategories"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:scaleType="centerCrop"
@@ -22,7 +22,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/text_view_categories"
+            android:id="@+id/TextViewCategories"
             style="@style/StyleScreenHeader"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
