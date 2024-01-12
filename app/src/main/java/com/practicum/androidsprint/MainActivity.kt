@@ -1,6 +1,8 @@
 package com.practicum.androidsprint
 
 import android.os.Bundle
+import android.view.View
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
@@ -20,6 +22,17 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.commit {
             setReorderingAllowed(true)
             add<CategoriesListFragment>(R.id.mainContainer)
+        }
+
+        binding.btnCategories.setOnClickListener {
+            supportFragmentManager.commit {
+                replace(R.id.mainContainer, CategoriesListFragment())
+            }
+        }
+        binding.btnFavorites.setOnClickListener {
+            supportFragmentManager.commit {
+                replace(R.id.mainContainer, FavoritesFragment())
+            }
         }
     }
 }
