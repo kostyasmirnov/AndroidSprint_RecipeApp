@@ -8,6 +8,19 @@
         <item name="fontFamily">@font/montserrat_alternates_semi_bold</item>
     </style>
 
+    <style name="StyleTitleCategories14" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/montserrat_alternates_medium</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/background_btn_categories_color</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="StyleDescriptionCategories12">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/description_categories_color</item>
+    </style>
+
     <style name="StyleNavButton" parent="StyleTitle14">
         <item name="android:textAllCaps">true</item>
         <item name="android:textColor">@color/text_btn_color</item>
