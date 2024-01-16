@@ -19,6 +19,7 @@
     <style name="StyleDescriptionCategories12">
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/description_categories_color</item>
+        <item name="fontFamily">@font/montserrat_medium</item>
     </style>
 
     <style name="StyleNavButton" parent="StyleTitle14">

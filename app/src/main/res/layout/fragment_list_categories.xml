@@ -26,14 +26,12 @@
         <TextView
             android:id="@+id/textViewCategories"
             style="@style/StyleScreenHeader"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/main_padding"
             android:layout_marginBottom="@dimen/main_padding"
             android:background="@drawable/shape_header_rounded"
             android:text="@string/title_categories"
-            android:textColor="@color/screen_name_color"
-            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
