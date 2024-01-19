@@ -2,9 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/main_activity_background_color">
+    android:background="@color/main_activity_background_color"
+    android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,7 +18,7 @@
             android:layout_height="wrap_content"
             android:scaleType="centerCrop"
             android:src="@drawable/categories_background"
-            android:contentDescription="@string/title_categories"
+            android:contentDescription="@string/screen_burger_categories"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -24,17 +26,30 @@
         <TextView
             android:id="@+id/textViewCategories"
             style="@style/StyleScreenHeader"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/main_padding"
             android:layout_marginBottom="@dimen/main_padding"
             android:background="@drawable/shape_header_rounded"
             android:text="@string/title_categories"
-            android:textColor="@color/screen_name_color"
-            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCategories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/main_padding_half"
+        android:layout_marginTop="@dimen/main_padding"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:spanCount="2"
+        tools:itemCount="6"
+        tools:listitem="@layout/item_layout" />
 
 </LinearLayout>
