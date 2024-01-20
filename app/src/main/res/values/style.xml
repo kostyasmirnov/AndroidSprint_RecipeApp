@@ -33,7 +33,7 @@
     <style name="StyleScreenHeader" parent="TextAppearance.AppCompat">
         <item name="fontFamily">@font/montserrat_alternates_medium</item>
         <item name="android:textSize">20sp</item>
-        <item name="android:textColor">@color/screen_name_color</item>
+        <item name="android:textColor">@color/background_btn_categories_color</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textAllCaps">true</item>
         <item name="backgroundTint">@color/main_activity_background_color</item>

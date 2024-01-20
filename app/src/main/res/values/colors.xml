@@ -5,8 +5,6 @@
     <color name="main_activity_background_color">#F4FAFF</color>
     <color name="categories_btn_color">#525DC0</color>
     <color name="favorites_btn_color">#E13E3E</color>
-    <color name="screen_name_color">#5F3678</color>
-<!--    <color name="background_btn_categories_color">#525DC0</color>-->
     <color name="description_categories_color">#666666</color>
     <color name="background_btn_categories_color">#5F3678</color>
 </resources>
