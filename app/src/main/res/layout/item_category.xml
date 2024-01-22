@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_centerVertical="true"
     android:layout_marginHorizontal="@dimen/main_padding_half"
+    android:layout_marginTop="@dimen/main_padding"
     android:layout_marginBottom="@dimen/main_padding"
     android:backgroundTint="@color/text_btn_color"
     android:clickable="true"
