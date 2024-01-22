@@ -5,7 +5,8 @@
     android:id="@+id/mainContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/main_activity_background_color"
+    android:background="@drawable/ripple_effect"
+    android:backgroundTint="@color/main_activity_background_color"
     android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -42,7 +43,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/main_padding_half"
-        android:layout_marginTop="@dimen/main_padding"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,6 +50,6 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView4"
         app:spanCount="2"
         tools:itemCount="6"
-        tools:listitem="@layout/item_layout" />
+        tools:listitem="@layout/item_category" />
 
 </LinearLayout>
