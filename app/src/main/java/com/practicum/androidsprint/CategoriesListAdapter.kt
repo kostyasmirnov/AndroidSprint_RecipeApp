@@ -42,6 +42,8 @@ class CategoriesListAdapter(
 
         try {
 
+            val imageDescription = "Изображение категории ${categoryTitle.text}"
+            viewHolder.ivCategoryImage.contentDescription = imageDescription
             viewHolder.ivCategoryImage.setImageDrawable(drawable)
             viewHolder.tvCategoryName.text = categoryTitle.text
             viewHolder.tvCategoryDescription.text = categoryDescription.text
