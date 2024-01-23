@@ -1,5 +1,6 @@
 package com.practicum.androidsprint
 
+import android.content.res.Resources
 import android.graphics.drawable.Drawable
 import android.util.Log
 import android.view.LayoutInflater
@@ -14,6 +15,7 @@ import java.io.InputStream
 class CategoriesListAdapter(
     private val dataSet: List<Category>,
     private val context: CategoriesListFragment,
+    private val resources: Resources = context.resources,
 ) : RecyclerView.Adapter<CategoriesListAdapter.ViewHolder>() {
 
     private var itemClickListener: OnItemClickListener? = null
@@ -52,7 +54,8 @@ class CategoriesListAdapter(
 
         try {
 
-            val imageDescription = "Изображение категории ${categoryTitle.text}"
+            val imageDescription =
+                resources.getString(R.string.image_category_description) + " ${categoryTitle.text}"
             viewHolder.ivCategoryImage.contentDescription = imageDescription
             viewHolder.ivCategoryImage.setImageDrawable(drawable)
             viewHolder.tvCategoryName.text = categoryTitle.text
