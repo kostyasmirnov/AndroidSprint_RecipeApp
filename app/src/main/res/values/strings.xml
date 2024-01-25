@@ -6,4 +6,6 @@
     <string name="title_burgers_category_text">бургеры</string>
     <string name="description_burgers_category_text">Рецепты всех популярных видов бургеров</string>
     <string name="screen_burger_categories">категории</string>
+    <string name="recipes_list">Список рецептов</string>
+    <string name="image_category_description">Изображение категории</string>
 </resources>
