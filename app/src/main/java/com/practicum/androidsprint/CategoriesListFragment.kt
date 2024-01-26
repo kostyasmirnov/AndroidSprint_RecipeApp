@@ -10,7 +10,7 @@ import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import com.practicum.androidsprint.databinding.FragmentListCategoriesBinding
 
-class CategoriesListFragment :Fragment() {
+class CategoriesListFragment : Fragment() {
 
     private var _binding: FragmentListCategoriesBinding? = null
 
@@ -73,7 +73,8 @@ class CategoriesListFragment :Fragment() {
         val categoriesListAdapter = CategoriesListAdapter(categories, context = this)
         val recyclerView = binding.rvCategories
         recyclerView.adapter = categoriesListAdapter
-        categoriesListAdapter.setOnItemClickListener(object : CategoriesListAdapter.OnItemClickListener {
+        categoriesListAdapter.setOnItemClickListener(object :
+            CategoriesListAdapter.OnItemClickListener {
             override fun onItemClick(categoryId: Int) {
                 openRecipesByCategoryId(categoryId)
             }
@@ -81,17 +82,20 @@ class CategoriesListFragment :Fragment() {
     }
 
     fun openRecipesByCategoryId(categoryId: Int) {
-        val categoryName: String = categories[categoryId].title
-        val categoryImageUrl: String = categories[categoryId].imageUrl
-        val bundle = bundleOf(
-            Constants.ARG_CATEGORY_ID to categoryId,
-            Constants.ARG_CATEGORY_NAME to categoryName,
-            Constants.ARG_CATEGORY_IMAGE_URL to categoryImageUrl
-        )
-        parentFragmentManager.commit {
-            setReorderingAllowed(true)
-            replace<RecipesListFragment>(R.id.mainContainer, args = bundle)
-            addToBackStack(null)
+        val category = categories.find { it.id == categoryId }
+        if (category != null) {
+            val categoryName: String = category.title
+            val categoryImageUrl: String = category.imageUrl
+            val bundle = bundleOf(
+                Constants.ARG_CATEGORY_ID to categoryId,
+                Constants.ARG_CATEGORY_NAME to categoryName,
+                Constants.ARG_CATEGORY_IMAGE_URL to categoryImageUrl
+            )
+            parentFragmentManager.commit {
+                setReorderingAllowed(true)
+                replace<RecipesListFragment>(R.id.mainContainer, args = bundle)
+                addToBackStack(null)
+            }
         }
     }
 }

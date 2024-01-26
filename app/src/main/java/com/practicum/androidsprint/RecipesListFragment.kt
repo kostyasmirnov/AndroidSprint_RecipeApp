@@ -23,9 +23,11 @@ class RecipesListFragment: Fragment(R.layout.fragment_recipes_list) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val textView = binding.tvCategoriesList
-        recipeId = arguments?.let { Constants.ARG_CATEGORY_ID }
-        recipeName = arguments?.let { Constants.ARG_CATEGORY_NAME }
-        recipeImageUrl = arguments?.let { Constants.ARG_CATEGORY_IMAGE_URL }
-        textView.text
+        arguments?.let {
+            recipeId = it.getString(Constants.ARG_CATEGORY_ID)
+            recipeName = it.getString(Constants.ARG_CATEGORY_NAME)
+            recipeImageUrl = it.getString(Constants.ARG_CATEGORY_IMAGE_URL)
+            textView.text
+        }
     }
 }
