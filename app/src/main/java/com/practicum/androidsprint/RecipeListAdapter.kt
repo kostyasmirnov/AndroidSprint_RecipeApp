@@ -28,8 +28,8 @@ class RecipesListAdapter(
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val cvRecipeItem: CardView = view.findViewById(R.id.cvCategoryItem)
-        val tvRecipeName: TextView = view.findViewById(R.id.tvCategoryName)
-        val ivRecipeImage: ImageView = view.findViewById(R.id.ivCategoryImage)
+        val tvRecipeName: TextView = view.findViewById(R.id.tvRecipeName)
+        val ivRecipeImage: ImageView = view.findViewById(R.id.ivRecipeImage)
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
