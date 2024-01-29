@@ -5,7 +5,6 @@
     android:id="@+id/mainContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ripple_effect"
     android:backgroundTint="@color/main_background_color"
     android:orientation="vertical">
 
