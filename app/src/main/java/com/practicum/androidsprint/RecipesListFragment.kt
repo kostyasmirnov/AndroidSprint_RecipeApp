@@ -13,7 +13,9 @@ import java.io.InputStream
 
 class RecipesListFragment: Fragment(R.layout.fragment_recipes_list) {
 
-    private lateinit var binding: FragmentRecipesListBinding
+    private val binding by lazy {
+        FragmentRecipesListBinding.inflate(layoutInflater)
+    }
 
     private var categoryId: String? = null
     private var categoryName: String? = null
@@ -24,7 +26,6 @@ class RecipesListFragment: Fragment(R.layout.fragment_recipes_list) {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentRecipesListBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -38,8 +39,8 @@ class RecipesListFragment: Fragment(R.layout.fragment_recipes_list) {
         val fragment = context
         val inputStream: InputStream? = categoryImageUrl?.let { fragment?.assets?.open(it) }
         val drawable = Drawable.createFromStream(inputStream, null)
-        binding.recipesListHeaderImg.setImageDrawable(drawable)
-        binding.recipesListHeaderText.text = categoryName
+        binding.ivRecipesListHeaderImg.setImageDrawable(drawable)
+        binding.tvRecipesListHeaderText.text = categoryName
 
     }
 

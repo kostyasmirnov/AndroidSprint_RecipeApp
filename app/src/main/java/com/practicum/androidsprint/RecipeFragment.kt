@@ -8,10 +8,11 @@ import androidx.fragment.app.Fragment
 import com.practicum.androidsprint.databinding.FragmentRecipeBinding
 
 class RecipeFragment : Fragment(R.layout.fragment_recipe) {
-    private lateinit var binding: FragmentRecipeBinding
+    private val binding by lazy {
+        FragmentRecipeBinding.inflate(layoutInflater)
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        binding = FragmentRecipeBinding.inflate(inflater, container, false)
         return binding.root
     }
 }

@@ -9,14 +9,15 @@ import com.practicum.androidsprint.databinding.FragmentFavoritesBinding
 
 class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
 
-    private lateinit var binding: FragmentFavoritesBinding
+    private val binding by lazy {
+        FragmentFavoritesBinding.inflate(layoutInflater)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentFavoritesBinding.inflate(inflater, container, false)
+    ): View {
         return binding.root
     }
 
