@@ -2,7 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="text_btn_color">#FFFFFF</color>
-    <color name="main_activity_background_color">#F4FAFF</color>
+    <color name="main_background_color">#F4FAFF</color>
     <color name="categories_btn_color">#525DC0</color>
     <color name="favorites_btn_color">#E13E3E</color>
     <color name="description_categories_color">#666666</color>

@@ -30,9 +30,9 @@ class CategoriesListAdapter(
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val cvCategoryItem: CardView = itemView.findViewById(R.id.cvCategoryItem)
-        val tvCategoryName: TextView = itemView.findViewById(R.id.tvCategoryName)
+        val tvCategoryName: TextView = itemView.findViewById(R.id.tvRecipeName)
         val tvCategoryDescription: TextView = itemView.findViewById(R.id.tvCategoryDescription)
-        val ivCategoryImage: ImageView = itemView.findViewById(R.id.ivCategoryImage)
+        val ivCategoryImage: ImageView = itemView.findViewById(R.id.ivRecipeImage)
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {

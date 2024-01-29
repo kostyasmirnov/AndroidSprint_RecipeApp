@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cvCategoryItem"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -9,6 +10,8 @@
     android:layout_marginTop="@dimen/main_padding"
     android:backgroundTint="@color/text_btn_color"
     android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
     app:cardCornerRadius="@dimen/main_padding_half">
 
     <LinearLayout
@@ -20,12 +23,12 @@
             android:id="@+id/ivRecipeImage"
             android:layout_width="match_parent"
             android:layout_height="130dp"
-            android:background="@drawable/shape_header_rounded_corners"
+            android:contentDescription="@string/title_burgers_category_text"
             android:scaleType="centerCrop"
-            android:src="@drawable/burger"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/burger" />
 
         <TextView
             android:id="@+id/tvRecipeName"
@@ -34,18 +37,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/main_padding_half"
             android:layout_marginTop="@dimen/main_padding_half"
-            android:layout_marginEnd="@dimen/main_padding_half"
+            android:layout_marginEnd="@dimen/end_margin_recipe"
+            android:layout_marginBottom="@dimen/main_padding_half"
             android:text="@string/title_burgers_category_text" />
 
-        <TextView
-            android:id="@+id/tvCategoryDescription"
-            style="@style/StyleDescriptionCategories12"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/main_padding_half"
-            android:layout_marginHorizontal="@dimen/main_padding_half"
-            android:layout_marginVertical="@dimen/main_padding_half"
-            android:text="@string/description_burgers_category_text" />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
