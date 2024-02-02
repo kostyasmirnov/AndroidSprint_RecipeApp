@@ -49,7 +49,7 @@ class RecipesListFragment : Fragment(R.layout.fragment_recipes_list) {
     }
 
     private fun initRecycler() {
-        val recipesListAdapter = RecipesListAdapter(STUB.burgerRecipes, fragment = this)
+        val recipesListAdapter = RecipesListAdapter(STUB.getBurgerRecipes(), fragment = this)
         val recyclerView = binding.rvRecipes
         recyclerView.adapter = recipesListAdapter
         recipesListAdapter.setOnItemClickListener(object : RecipesListAdapter.OnItemClickListener {
@@ -61,7 +61,7 @@ class RecipesListFragment : Fragment(R.layout.fragment_recipes_list) {
     }
 
     fun openRecipeByRecipeId(recipeId: Int) {
-        val recipe = STUB.burgerRecipes[recipeId]
+        val recipe = STUB.getRecipeById(recipeId)
         val bundle = bundleOf(
             Constants.ARG_RECIPE_ID to recipeId,
             Constants.ARG_RECIPE_NAME to recipeName,
