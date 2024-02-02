@@ -33,9 +33,12 @@ class RecipesListFragment : Fragment(R.layout.fragment_recipes_list) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initRecycler()
-        recipeId = arguments?.getString(Constants.ARG_RECIPE_ID)
-        recipeName = arguments?.getString(Constants.ARG_RECIPE_NAME)
-        recipeImageUrl = arguments?.getString(Constants.ARG_RECIPE_IMAGE_URL)
+
+        arguments?.let { args ->
+            recipeId = args.getString(Constants.ARG_RECIPE_ID)
+            recipeName = args.getString(Constants.ARG_RECIPE_NAME)
+            recipeImageUrl = args.getString(Constants.ARG_RECIPE_IMAGE_URL)
+        }
 
         val fragment = context
         val inputStream: InputStream? = recipeImageUrl?.let { fragment?.assets?.open(it) }
