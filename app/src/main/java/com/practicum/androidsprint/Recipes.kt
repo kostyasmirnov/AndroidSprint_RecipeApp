@@ -242,4 +242,18 @@ object STUB {
             burgerRecipes
         } else listOf()
     }
+
+    fun getRecipeById(recipeId: String): List<Recipe> {
+        val idToFind = recipeId.toIntOrNull()
+        return if (idToFind != null) {
+            val foundRecipe = burgerRecipes.find { it.id == idToFind }
+            if (foundRecipe != null) {
+                listOf(foundRecipe)
+            } else {
+                listOf()
+            }
+        } else {
+            listOf()
+        }
+    }
 }
