@@ -51,9 +51,9 @@ class CategoriesListFragment : Fragment() {
             val categoryName: String = category.title
             val categoryImageUrl: String = category.imageUrl
             val bundle = bundleOf(
-                Constants.ARG_CATEGORY_ID to categoryId,
-                Constants.ARG_CATEGORY_NAME to categoryName,
-                Constants.ARG_CATEGORY_IMAGE_URL to categoryImageUrl
+                Constants.ARG_RECIPE_ID to categoryId,
+                Constants.ARG_RECIPE_NAME to categoryName,
+                Constants.ARG_RECIPE_IMAGE_URL to categoryImageUrl
             )
             parentFragmentManager.commit {
                 setReorderingAllowed(true)

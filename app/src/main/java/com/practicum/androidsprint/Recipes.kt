@@ -15,7 +15,7 @@ object STUB {
         return categories
     }
 
-    val burgerRecipes = listOf(
+    private val burgerRecipes = listOf(
         Recipe(
             id = 0,
             title = "Классический гамбургер",
@@ -237,9 +237,16 @@ object STUB {
         )
     )
 
+    fun getBurgerRecipes(): List<Recipe> {
+        return burgerRecipes
+    }
+
     fun getRecipesByCategoryId(categoryId: String): List<Recipe> {
         return if (categoryId.toInt() == 0) {
             burgerRecipes
         } else listOf()
     }
+
+    fun getRecipeById(recipeId: Int) = burgerRecipes.find { it.id == recipeId } ?: burgerRecipes[0]
+
 }

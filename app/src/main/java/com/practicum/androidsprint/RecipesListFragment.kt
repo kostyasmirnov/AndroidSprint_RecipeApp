@@ -5,21 +5,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import com.practicum.androidsprint.databinding.FragmentRecipesListBinding
 import java.io.InputStream
 
-class RecipesListFragment: Fragment(R.layout.fragment_recipes_list) {
+class RecipesListFragment : Fragment(R.layout.fragment_recipes_list) {
 
     private val binding by lazy {
         FragmentRecipesListBinding.inflate(layoutInflater)
     }
 
-    private var categoryId: String? = null
-    private var categoryName: String? = null
-    private var categoryImageUrl: String? = null
+    private var recipeId: String? = null
+    private var recipeName: String? = null
+    private var recipeImageUrl: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,20 +33,23 @@ class RecipesListFragment: Fragment(R.layout.fragment_recipes_list) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initRecycler()
-        categoryId = arguments?.getString(Constants.ARG_CATEGORY_ID)
-        categoryName = arguments?.getString(Constants.ARG_CATEGORY_NAME)
-        categoryImageUrl = arguments?.getString(Constants.ARG_CATEGORY_IMAGE_URL)
+
+        arguments?.let { args ->
+            recipeId = args.getString(Constants.ARG_RECIPE_ID)
+            recipeName = args.getString(Constants.ARG_RECIPE_NAME)
+            recipeImageUrl = args.getString(Constants.ARG_RECIPE_IMAGE_URL)
+        }
 
         val fragment = context
-        val inputStream: InputStream? = categoryImageUrl?.let { fragment?.assets?.open(it) }
+        val inputStream: InputStream? = recipeImageUrl?.let { fragment?.assets?.open(it) }
         val drawable = Drawable.createFromStream(inputStream, null)
         binding.ivRecipesListHeaderImg.setImageDrawable(drawable)
-        binding.tvRecipesListHeaderText.text = categoryName
+        binding.tvRecipesListHeaderText.text = recipeName
 
     }
 
     private fun initRecycler() {
-        val recipesListAdapter = RecipesListAdapter(STUB.burgerRecipes, fragment = this)
+        val recipesListAdapter = RecipesListAdapter(STUB.getBurgerRecipes(), fragment = this)
         val recyclerView = binding.rvRecipes
         recyclerView.adapter = recipesListAdapter
         recipesListAdapter.setOnItemClickListener(object : RecipesListAdapter.OnItemClickListener {
@@ -57,9 +61,18 @@ class RecipesListFragment: Fragment(R.layout.fragment_recipes_list) {
     }
 
     fun openRecipeByRecipeId(recipeId: Int) {
+        val recipe = STUB.getRecipeById(recipeId)
+        val bundle = bundleOf(
+            Constants.ARG_RECIPE_ID to recipeId,
+            Constants.ARG_RECIPE_NAME to recipeName,
+            Constants.ARG_RECIPE_IMAGE_URL to recipeImageUrl
+        )
+
+        bundle.putParcelable(Constants.ARG_RECIPE, recipe)
+
         parentFragmentManager.commit {
             setReorderingAllowed(true)
-            replace<RecipeFragment>(R.id.mainContainer)
+            replace<RecipeFragment>(R.id.mainContainer, args = bundle)
             addToBackStack(null)
         }
 

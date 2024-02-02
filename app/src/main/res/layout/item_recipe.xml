@@ -22,7 +22,7 @@
         <ImageView
             android:id="@+id/ivRecipeImage"
             android:layout_width="match_parent"
-            android:layout_height="130dp"
+            android:layout_height="@dimen/height_top_screen_recipe"
             android:contentDescription="@string/title_burgers_category_text"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
