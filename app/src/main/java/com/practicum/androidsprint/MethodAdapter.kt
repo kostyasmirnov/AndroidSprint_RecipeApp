@@ -18,7 +18,7 @@ class MethodAdapter(
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.item_method, viewGroup, false) // хз что тут вместо item_recipe
+            .inflate(R.layout.item_method, viewGroup, false)
         return ViewHolder(view)
     }
 
@@ -35,7 +35,6 @@ class MethodAdapter(
             )
         )
         methodDescription.text = "$index. ${dataSet[position]}"
-        methodDescription.textSize = 14F
     }
 
     override fun getItemCount() = dataSet.size

@@ -1,7 +1,6 @@
 package com.practicum.androidsprint
 
 import android.annotation.SuppressLint
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,37 +31,33 @@ class IngredientsAdapter(
         val ingredientCount = viewHolder.ingredientCount
         val ingredientMeasure = viewHolder.ingredientMeasure
 
-        try {
-            viewHolder.ingredientName.text = ingredientName.text
-            viewHolder.ingredientCount.text = ingredientCount.text
-            viewHolder.ingredientMeasure.text = ingredientMeasure.text
-            viewHolder.ingredientName.setTextColor(
-                ContextCompat.getColor(
-                    viewHolder.itemView.context,
-                    R.color.description_categories_color
-                )
-            )
-            viewHolder.ingredientCount.setTextColor(
-                ContextCompat.getColor(
-                    viewHolder.itemView.context,
-                    R.color.description_categories_color
-                )
-            )
-            viewHolder.ingredientMeasure.setTextColor(
-                ContextCompat.getColor(
-                    viewHolder.itemView.context,
-                    R.color.description_categories_color
-                )
-            )
-            ingredientName.text = dataSet[position].description
-            ingredientCount.text = "${dataSet[position].quantity} "
-            ingredientMeasure.text = dataSet[position].unitOfMeasure
 
-        } catch (e: Exception) {
-            Log.e(
-                "err", "onBindViewHolder :  ${e.printStackTrace()}"
+        viewHolder.ingredientName.text = ingredientName.text
+        viewHolder.ingredientCount.text = ingredientCount.text
+        viewHolder.ingredientMeasure.text = ingredientMeasure.text
+        viewHolder.ingredientName.setTextColor(
+            ContextCompat.getColor(
+                viewHolder.itemView.context,
+                R.color.description_categories_color
             )
-        }
+        )
+        viewHolder.ingredientCount.setTextColor(
+            ContextCompat.getColor(
+                viewHolder.itemView.context,
+                R.color.description_categories_color
+            )
+        )
+        viewHolder.ingredientMeasure.setTextColor(
+            ContextCompat.getColor(
+                viewHolder.itemView.context,
+                R.color.description_categories_color
+            )
+        )
+        ingredientName.text = dataSet[position].description
+        ingredientCount.text = "${dataSet[position].quantity} "
+        ingredientMeasure.text = dataSet[position].unitOfMeasure
+
+
     }
 
     override fun getItemCount() = dataSet.size
