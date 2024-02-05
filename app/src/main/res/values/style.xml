@@ -45,6 +45,7 @@
     <style name="StyleTextIngredients">
         <item name="fontFamily">@font/montserrat_alternates_medium</item>
         <item name="textAllCaps">true</item>
+        <item name="android:textColor">@color/description_categories_color</item>
     </style>
 
 </resources>
