@@ -10,7 +10,7 @@ class DividerItemDecoration(
     private val orientation: Int
 ) : DividerItemDecoration(context, orientation) {
     private var lastItemDecorated: Boolean = true
-    private val spaceSize = context.resources.getDimensionPixelSize(R.dimen.top_screen_sheet)
+    private val spaceSize = context.resources.getDimensionPixelSize(R.dimen.main_padding)
 
     fun setLastItemDecorated(decorated: Boolean) {
         lastItemDecorated = decorated
