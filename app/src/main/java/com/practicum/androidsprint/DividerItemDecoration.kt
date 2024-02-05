@@ -10,6 +10,7 @@ class DividerItemDecoration(
     private val orientation: Int
 ) : DividerItemDecoration(context, orientation) {
     private var lastItemDecorated: Boolean = true
+    private val spaceSize = context.resources.getDimensionPixelSize(R.dimen.top_screen_sheet)
 
     fun setLastItemDecorated(decorated: Boolean) {
         lastItemDecorated = decorated
@@ -26,10 +27,10 @@ class DividerItemDecoration(
             for (i in 0 until childCount) {
                 val child = parent.getChildAt(i)
                 val params = child.layoutParams as RecyclerView.LayoutParams
+                val left = parent.paddingLeft + spaceSize
+                val right = parent.width - parent.paddingRight - spaceSize
                 val top = child.bottom + params.bottomMargin
                 val bottom = top + divider.intrinsicHeight
-                val left = parent.paddingLeft
-                val right = parent.width - parent.paddingRight
                 divider.setBounds(left, top, right, bottom)
                 divider.draw(canvas)
             }
