@@ -15,8 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/ingredient_padding"
-        android:textSize="14sp"
-        style="@style/StyleTextIngredients"
+        style="@style/StyleTextCookingMethod"
         tools:text="1. В глубокой миске смешайте говяжий фарш, лук, чеснок, соль и перец. Разделите фарш на 4 равные части и сформируйте котлеты." />
 
 </LinearLayout>
