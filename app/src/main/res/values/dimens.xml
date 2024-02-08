@@ -6,4 +6,5 @@
     <dimen name="end_margin_recipe">100dp</dimen>
     <dimen name="height_top_screen_recipe">130dp</dimen>
     <dimen name="ingredient_padding">12dp</dimen>
+    <dimen name="ingredient_padding_half">6dp</dimen>
 </resources>

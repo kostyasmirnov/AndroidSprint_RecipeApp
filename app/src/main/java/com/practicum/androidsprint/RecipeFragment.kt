@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SeekBar
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,6 +18,8 @@ class RecipeFragment : Fragment(R.layout.fragment_recipe) {
     private val binding by lazy {
         FragmentRecipeBinding.inflate(layoutInflater)
     }
+    private lateinit var seekBar: SeekBar
+    private var ingredientsAdapter: IngredientsAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,8 +34,7 @@ class RecipeFragment : Fragment(R.layout.fragment_recipe) {
 
         val recipeParcelable = getRecipeFromArguments()
         setupUI(recipeParcelable)
-        initIngredientsRecycler(recipeParcelable)
-        initMethodRecycler(recipeParcelable)
+        initRecycler(recipeParcelable)
     }
 
     private fun getRecipeFromArguments(): Recipe? {
@@ -53,23 +55,25 @@ class RecipeFragment : Fragment(R.layout.fragment_recipe) {
         }
     }
 
-    private fun initIngredientsRecycler(recipe: Recipe?) {
-        recipe?.ingredients?.let { ingredients ->
-            binding.rvIngredients.apply {
-                adapter = IngredientsAdapter(ingredients)
-                layoutManager = LinearLayoutManager(context)
-                addItemDecoration(createCustomDivider())
-            }
-        }
-    }
+    private fun initRecycler(recipe: Recipe?) {
+        ingredientsAdapter = recipe?.ingredients?.let { IngredientsAdapter(it) }
 
-    private fun initMethodRecycler(recipe: Recipe?) {
-        recipe?.method?.let { method ->
-            binding.rvMethod.apply {
-                adapter = MethodAdapter(method)
-                layoutManager = LinearLayoutManager(context)
-                addItemDecoration(createCustomDivider())
-            }
+
+        val seekBarListener = IngredientsCountChooseSeekbar(
+            onProgressChanged = { progress ->
+                binding.tvPortionsCount.text = progress.toString()
+                ingredientsAdapter?.updateIngredients(progress)
+            },
+        )
+        seekBar = binding.sbPortionsCount
+        seekBar.setPadding(0, 0, 0, 0)
+        seekBar.setOnSeekBarChangeListener(seekBarListener)
+        binding.rvIngredients.adapter = ingredientsAdapter
+
+        binding.rvIngredients.apply {
+            adapter = ingredientsAdapter
+            layoutManager = LinearLayoutManager(context)
+            addItemDecoration(createCustomDivider())
         }
     }
 
