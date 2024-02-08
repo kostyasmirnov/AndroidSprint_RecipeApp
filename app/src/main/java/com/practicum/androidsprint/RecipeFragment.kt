@@ -75,6 +75,14 @@ class RecipeFragment : Fragment(R.layout.fragment_recipe) {
             layoutManager = LinearLayoutManager(context)
             addItemDecoration(createCustomDivider())
         }
+
+        recipe?.method?.let { method ->
+            binding.rvMethod.apply {
+                adapter = MethodAdapter(method)
+                layoutManager = LinearLayoutManager(context)
+                addItemDecoration(createCustomDivider())
+            }
+        }
     }
 
     private fun createCustomDivider(): DividerItemDecoration {
