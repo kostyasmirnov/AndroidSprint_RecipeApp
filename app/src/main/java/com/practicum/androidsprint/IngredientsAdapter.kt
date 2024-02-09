@@ -29,49 +29,45 @@ class IngredientsAdapter(
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        val ingredientCurrentCount = dataSet[position].quantity
+        with(viewHolder) {
+            val ingredientCurrentCount = dataSet[position].quantity
+            val totalQuantity = ingredientCurrentCount.toFloat() * quantity
+            val displayQuantity = if ((totalQuantity % 1) == 0f) {
+                totalQuantity.toInt().toString()
+            } else {
+                String.format("%.1f", totalQuantity)
+            }
 
-        val ingredientName = viewHolder.ingredientName
-        val ingredientCount = viewHolder.ingredientCount
-        val ingredientMeasure = viewHolder.ingredientMeasure
-        val totalQuantity = ingredientCurrentCount.toFloat() * quantity
-        val displayQuantity = if ((totalQuantity % 1) == 0f) {
-            totalQuantity.toInt().toString()
-        } else {
-            String.format("%.1f", totalQuantity)
-        }
-
-        try {
-            viewHolder.ingredientName.text = ingredientName.text
-            viewHolder.ingredientCount.text = displayQuantity
-            viewHolder.ingredientMeasure.text = ingredientMeasure.text
-            viewHolder.ingredientName.setTextColor(
-                ContextCompat.getColor(
-                    viewHolder.itemView.context,
-                    R.color.description_categories_color
+            try {
+                ingredientName.setTextColor(
+                    ContextCompat.getColor(
+                        itemView.context,
+                        R.color.description_categories_color
+                    )
                 )
-            )
-            viewHolder.ingredientCount.setTextColor(
-                ContextCompat.getColor(
-                    viewHolder.itemView.context,
-                    R.color.description_categories_color
+                ingredientCount.setTextColor(
+                    ContextCompat.getColor(
+                        itemView.context,
+                        R.color.description_categories_color
+                    )
                 )
-            )
-            viewHolder.ingredientMeasure.setTextColor(
-                ContextCompat.getColor(
-                    viewHolder.itemView.context,
-                    R.color.description_categories_color
+                ingredientMeasure.setTextColor(
+                    ContextCompat.getColor(
+                        itemView.context,
+                        R.color.description_categories_color
+                    )
                 )
-            )
-            ingredientName.text = dataSet[position].description
-            ingredientCount.text = "$displayQuantity "
-            ingredientMeasure.text = dataSet[position].unitOfMeasure
-        } catch (e: Exception) {
-            Log.e(
-                "err", "onBindViewHolder : asset error ${e.printStackTrace()}"
-            )
+                ingredientName.text = dataSet[position].description
+                ingredientCount.text = "$displayQuantity "
+                ingredientMeasure.text = dataSet[position].unitOfMeasure
+            } catch (e: Exception) {
+                Log.e(
+                    "err", "onBindViewHolder : asset error ${e.printStackTrace()}"
+                )
+            }
         }
     }
+
 
     override fun getItemCount() = dataSet.size
 
