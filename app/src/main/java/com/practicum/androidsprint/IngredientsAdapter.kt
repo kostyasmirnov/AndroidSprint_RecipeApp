@@ -6,8 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import java.math.BigDecimal
+import java.math.RoundingMode
 
 class IngredientsAdapter(
     private val dataSet: List<Ingredient>,
@@ -31,40 +32,13 @@ class IngredientsAdapter(
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         with(viewHolder) {
             val ingredientCurrentCount = dataSet[position].quantity
-            val totalQuantity = ingredientCurrentCount.toFloat() * quantity
-            val displayQuantity = if ((totalQuantity % 1) == 0f) {
-                totalQuantity.toInt().toString()
-            } else {
-                String.format("%.1f", totalQuantity)
-            }
+            val totalQuantity = BigDecimal(ingredientCurrentCount) * BigDecimal(quantity)
+            val displayQuantity =
+                totalQuantity.setScale(1, RoundingMode.HALF_UP).stripTrailingZeros().toPlainString()
 
-            try {
-                ingredientName.setTextColor(
-                    ContextCompat.getColor(
-                        itemView.context,
-                        R.color.description_categories_color
-                    )
-                )
-                ingredientCount.setTextColor(
-                    ContextCompat.getColor(
-                        itemView.context,
-                        R.color.description_categories_color
-                    )
-                )
-                ingredientMeasure.setTextColor(
-                    ContextCompat.getColor(
-                        itemView.context,
-                        R.color.description_categories_color
-                    )
-                )
-                ingredientName.text = dataSet[position].description
-                ingredientCount.text = "$displayQuantity "
-                ingredientMeasure.text = dataSet[position].unitOfMeasure
-            } catch (e: Exception) {
-                Log.e(
-                    "err", "onBindViewHolder : asset error ${e.printStackTrace()}"
-                )
-            }
+            ingredientName.text = dataSet[position].description
+            ingredientCount.text = "$displayQuantity "
+            ingredientMeasure.text = dataSet[position].unitOfMeasure
         }
     }
 
