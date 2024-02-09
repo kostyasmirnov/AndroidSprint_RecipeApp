@@ -39,11 +39,6 @@ class RecipesListFragment : Fragment(R.layout.fragment_recipes_list) {
         initRecycler()
         initArgs()
         initUI()
-
-        val inputStream: InputStream? = recipeImageUrl?.let { requireContext().assets?.open(it) }
-        val drawable = Drawable.createFromStream(inputStream, null)
-        binding.ivRecipesListHeaderImg.setImageDrawable(drawable)
-        binding.tvRecipesListHeaderText.text = recipeName
     }
 
     private fun initArgs() {
