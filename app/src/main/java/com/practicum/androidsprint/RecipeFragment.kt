@@ -20,7 +20,7 @@ class RecipeFragment : Fragment(R.layout.fragment_recipe) {
     }
     private lateinit var seekBar: SeekBar
     private var ingredientsAdapter: IngredientsAdapter? = null
-    private val sizeInDp = resources.getDimensionPixelSize(R.dimen.main_padding)
+    private var sizeInDp: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,6 +36,7 @@ class RecipeFragment : Fragment(R.layout.fragment_recipe) {
         val recipeParcelable = getRecipeFromArguments()
         setupUI(recipeParcelable)
         initRecycler(recipeParcelable)
+        sizeInDp  = resources.getDimensionPixelSize(R.dimen.main_padding)
     }
 
     private fun getRecipeFromArguments(): Recipe? {
