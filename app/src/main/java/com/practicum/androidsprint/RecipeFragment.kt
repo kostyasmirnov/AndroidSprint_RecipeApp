@@ -20,6 +20,7 @@ class RecipeFragment : Fragment(R.layout.fragment_recipe) {
     }
     private lateinit var seekBar: SeekBar
     private var ingredientsAdapter: IngredientsAdapter? = null
+    private val sizeInDp = resources.getDimensionPixelSize(R.dimen.main_padding)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -66,7 +67,7 @@ class RecipeFragment : Fragment(R.layout.fragment_recipe) {
             },
         )
         seekBar = binding.sbPortionsCount
-        seekBar.setPadding(16, 0, 16, 0)
+        seekBar.setPadding(sizeInDp, 0, sizeInDp, 0)
         seekBar.setOnSeekBarChangeListener(seekBarListener)
         binding.rvIngredients.adapter = ingredientsAdapter
 
