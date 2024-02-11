@@ -36,7 +36,7 @@ class RecipeFragment : Fragment(R.layout.fragment_recipe) {
         val recipeParcelable = getRecipeFromArguments()
         setupUI(recipeParcelable)
         initRecycler(recipeParcelable)
-        sizeInDp  = resources.getDimensionPixelSize(R.dimen.main_padding)
+        sizeInDp = resources.getDimensionPixelSize(R.dimen.main_padding)
     }
 
     private fun getRecipeFromArguments(): Recipe? {
@@ -88,11 +88,8 @@ class RecipeFragment : Fragment(R.layout.fragment_recipe) {
     }
 
     private fun createCustomDivider(): DividerItemDecoration {
-        val dividerItemDecoration = context?.let {
-            DividerItemDecoration(it, RecyclerView.VERTICAL)
-        }
-        dividerItemDecoration?.setLastItemDecorated(false)
-        return dividerItemDecoration!!
+        val dividerItemDecoration = DividerItemDecoration(context, RecyclerView.VERTICAL)
+        dividerItemDecoration.setLastItemDecorated(false)
+        return dividerItemDecoration
     }
-
 }

@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 
 class DividerItemDecoration(
-    context: Context,
+    context: Context?,
     private val orientation: Int
 ) : DividerItemDecoration(context, orientation) {
     private var lastItemDecorated: Boolean = true
@@ -14,7 +14,7 @@ class DividerItemDecoration(
 
 
     init {
-        spaceSize = if (context.resources != null) {
+        spaceSize = if (context?.resources != null) {
             context.resources.getDimensionPixelSize(R.dimen.main_padding)
         } else {
             0
