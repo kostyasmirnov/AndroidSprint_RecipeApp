@@ -14,11 +14,7 @@ class DividerItemDecoration(
 
 
     init {
-        spaceSize = if (context?.resources != null) {
-            context.resources.getDimensionPixelSize(R.dimen.main_padding)
-        } else {
-            0
-        }
+        spaceSize = context?.resources?.getDimensionPixelSize(R.dimen.main_padding) ?: 0
     }
     fun setLastItemDecorated(decorated: Boolean) {
         lastItemDecorated = decorated
