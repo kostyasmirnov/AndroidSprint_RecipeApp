@@ -6,12 +6,20 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 
 class DividerItemDecoration(
-    context: Context,
+    context: Context?,
     private val orientation: Int
 ) : DividerItemDecoration(context, orientation) {
     private var lastItemDecorated: Boolean = true
-    private val spaceSize = context.resources.getDimensionPixelSize(R.dimen.main_padding)
+    private val spaceSize: Int
 
+
+    init {
+        spaceSize = if (context?.resources != null) {
+            context.resources.getDimensionPixelSize(R.dimen.main_padding)
+        } else {
+            0
+        }
+    }
     fun setLastItemDecorated(decorated: Boolean) {
         lastItemDecorated = decorated
     }

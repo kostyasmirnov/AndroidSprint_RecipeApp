@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SeekBar
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,6 +18,9 @@ class RecipeFragment : Fragment(R.layout.fragment_recipe) {
     private val binding by lazy {
         FragmentRecipeBinding.inflate(layoutInflater)
     }
+    private lateinit var seekBar: SeekBar
+    private var ingredientsAdapter: IngredientsAdapter? = null
+    private var sizeInDp: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,8 +35,8 @@ class RecipeFragment : Fragment(R.layout.fragment_recipe) {
 
         val recipeParcelable = getRecipeFromArguments()
         setupUI(recipeParcelable)
-        initIngredientsRecycler(recipeParcelable)
-        initMethodRecycler(recipeParcelable)
+        initRecycler(recipeParcelable)
+        sizeInDp = resources.getDimensionPixelSize(R.dimen.main_padding)
     }
 
     private fun getRecipeFromArguments(): Recipe? {
@@ -53,17 +57,27 @@ class RecipeFragment : Fragment(R.layout.fragment_recipe) {
         }
     }
 
-    private fun initIngredientsRecycler(recipe: Recipe?) {
-        recipe?.ingredients?.let { ingredients ->
-            binding.rvIngredients.apply {
-                adapter = IngredientsAdapter(ingredients)
-                layoutManager = LinearLayoutManager(context)
-                addItemDecoration(createCustomDivider())
-            }
-        }
-    }
+    private fun initRecycler(recipe: Recipe?) {
+        ingredientsAdapter = recipe?.ingredients?.let { IngredientsAdapter(it) }
 
-    private fun initMethodRecycler(recipe: Recipe?) {
+
+        val seekBarListener = IngredientsCountChooseSeekbar(
+            onProgressChanged = { progress ->
+                binding.tvPortionsCount.text = progress.toString()
+                ingredientsAdapter?.updateIngredients(progress)
+            },
+        )
+        seekBar = binding.sbPortionsCount
+        seekBar.setPadding(sizeInDp, 0, sizeInDp, 0)
+        seekBar.setOnSeekBarChangeListener(seekBarListener)
+        binding.rvIngredients.adapter = ingredientsAdapter
+
+        binding.rvIngredients.apply {
+            adapter = ingredientsAdapter
+            layoutManager = LinearLayoutManager(context)
+            addItemDecoration(createCustomDivider())
+        }
+
         recipe?.method?.let { method ->
             binding.rvMethod.apply {
                 adapter = MethodAdapter(method)
@@ -74,11 +88,8 @@ class RecipeFragment : Fragment(R.layout.fragment_recipe) {
     }
 
     private fun createCustomDivider(): DividerItemDecoration {
-        val dividerItemDecoration = context?.let {
-            DividerItemDecoration(it, RecyclerView.VERTICAL)
-        }
-        dividerItemDecoration?.setLastItemDecorated(false)
-        return dividerItemDecoration!!
+        val dividerItemDecoration = DividerItemDecoration(context, RecyclerView.VERTICAL)
+        dividerItemDecoration.setLastItemDecorated(false)
+        return dividerItemDecoration
     }
-
 }

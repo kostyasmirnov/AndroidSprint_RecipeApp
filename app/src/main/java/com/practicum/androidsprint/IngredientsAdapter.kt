@@ -1,16 +1,20 @@
 package com.practicum.androidsprint
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import java.math.BigDecimal
+import java.math.RoundingMode
 
 class IngredientsAdapter(
     private val dataSet: List<Ingredient>,
 ) : RecyclerView.Adapter<IngredientsAdapter.ViewHolder>() {
+
+    private var quantity = 1
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val ingredientName: TextView = view.findViewById(R.id.tvRecipeIngredientName)
@@ -26,40 +30,26 @@ class IngredientsAdapter(
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
+        with(viewHolder) {
+            val ingredientCurrentCount = dataSet[position].quantity
+            val totalQuantity = BigDecimal(ingredientCurrentCount) * BigDecimal(quantity)
+            val displayQuantity =
+                totalQuantity.setScale(1, RoundingMode.HALF_UP).stripTrailingZeros().toPlainString()
 
-        val ingredientName = viewHolder.ingredientName
-        val ingredientCount = viewHolder.ingredientCount
-        val ingredientMeasure = viewHolder.ingredientMeasure
-
-
-        viewHolder.ingredientName.text = ingredientName.text
-        viewHolder.ingredientCount.text = ingredientCount.text
-        viewHolder.ingredientMeasure.text = ingredientMeasure.text
-        viewHolder.ingredientName.setTextColor(
-            ContextCompat.getColor(
-                viewHolder.itemView.context,
-                R.color.description_categories_color
-            )
-        )
-        viewHolder.ingredientCount.setTextColor(
-            ContextCompat.getColor(
-                viewHolder.itemView.context,
-                R.color.description_categories_color
-            )
-        )
-        viewHolder.ingredientMeasure.setTextColor(
-            ContextCompat.getColor(
-                viewHolder.itemView.context,
-                R.color.description_categories_color
-            )
-        )
-        ingredientName.text = dataSet[position].description
-        ingredientCount.text = "${dataSet[position].quantity} "
-        ingredientMeasure.text = dataSet[position].unitOfMeasure
-
-
+            ingredientName.text = dataSet[position].description
+            ingredientCount.text = "$displayQuantity "
+            ingredientMeasure.text = dataSet[position].unitOfMeasure
+        }
     }
 
+
     override fun getItemCount() = dataSet.size
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateIngredients(progress: Int) {
+        Log.d("IngredientsAdapter", "Updating ingredients with progress: $progress")
+        quantity = progress
+        notifyDataSetChanged()
+    }
 
 }
