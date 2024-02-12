@@ -63,7 +63,6 @@
                     style="@style/StyleScreenHeader"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/main_padding"
                     android:text="@string/title_ingredients"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="parent"
@@ -86,6 +85,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingStart="@dimen/ingredient_padding_half"
+                    android:text="@string/default_portions_count"
                     app:layout_constraintBottom_toBottomOf="@+id/tvPortionsSubtitle"
                     app:layout_constraintStart_toEndOf="@+id/tvPortionsSubtitle"
                     app:layout_constraintTop_toTopOf="@+id/tvPortionsSubtitle"
@@ -93,9 +93,9 @@
 
                 <androidx.appcompat.widget.AppCompatSeekBar
                     android:id="@+id/sbPortionsCount"
+                    style="@style/StyleSeekBar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    style="@style/StyleSeekBar"
                     android:layout_marginTop="@dimen/ingredient_padding_half"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
