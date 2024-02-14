@@ -29,14 +29,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/main_padding"
-            android:layout_marginEnd="@dimen/main_padding"
             android:layout_marginBottom="@dimen/main_padding"
             android:background="@drawable/shape_header_rounded_corners"
             android:gravity="start"
-            app:layout_constrainedWidth="true"
             app:layout_constraintBottom_toBottomOf="@+id/ivRecipeHeaderImg"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             tools:text="Бургеры с грибами и сыром" />
 
@@ -63,10 +59,9 @@
                     style="@style/StyleScreenHeader"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/main_padding"
                     android:text="@string/title_ingredients"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
                     tools:text="ингредиенты" />
 
                 <TextView
@@ -86,6 +81,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingStart="@dimen/ingredient_padding_half"
+                    android:text="@string/default_portions_count"
                     app:layout_constraintBottom_toBottomOf="@+id/tvPortionsSubtitle"
                     app:layout_constraintStart_toEndOf="@+id/tvPortionsSubtitle"
                     app:layout_constraintTop_toTopOf="@+id/tvPortionsSubtitle"
@@ -93,11 +89,11 @@
 
                 <androidx.appcompat.widget.AppCompatSeekBar
                     android:id="@+id/sbPortionsCount"
+                    style="@style/StyleSeekBar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/ingredient_padding_half"
-                    android:max="5"
-                    android:min="1"
+                    android:thumbOffset="0dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
