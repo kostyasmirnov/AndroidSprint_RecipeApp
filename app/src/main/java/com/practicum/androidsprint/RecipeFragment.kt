@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.SeekBar
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -54,6 +55,19 @@ class RecipeFragment : Fragment(R.layout.fragment_recipe) {
                 it.imageUrl.let { imgUrl -> context?.assets?.open(imgUrl) }
             val drawable = Drawable.createFromStream(inputStream, null)
             binding.ivRecipeHeaderImg.setImageDrawable(drawable)
+        }
+
+        val favoritesButton: ImageButton = binding.ibFavorites
+        var isImageFirst = true
+        favoritesButton.setBackgroundResource(R.drawable.ic_favorites_empty)
+
+        favoritesButton.setOnClickListener {
+            if (isImageFirst) {
+                favoritesButton.setBackgroundResource(R.drawable.ic_favorites)
+            } else {
+                favoritesButton.setBackgroundResource(R.drawable.ic_favorites_empty)
+            }
+            isImageFirst = !isImageFirst
         }
     }
 

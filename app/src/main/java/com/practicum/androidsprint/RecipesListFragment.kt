@@ -9,6 +9,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
+import com.practicum.androidsprint.Constants.Companion.ARG_CATEGORY_ID
 import com.practicum.androidsprint.databinding.FragmentRecipesListBinding
 import java.io.InputStream
 import com.practicum.androidsprint.Constants.Companion.ARG_RECIPE
@@ -57,10 +58,11 @@ class RecipesListFragment : Fragment(R.layout.fragment_recipes_list) {
     }
 
     private fun initRecycler() {
-        val recipesListAdapter = RecipesListAdapter(STUB.getBurgerRecipes(), fragment = this)
+        val recipesListAdapter = arguments?.getInt(ARG_CATEGORY_ID)
+            ?.let { STUB.getRecipesByCategoryId(it) }?.let { RecipesListAdapter(it, fragment = this) }
         val recyclerView = binding.rvRecipes
         recyclerView.adapter = recipesListAdapter
-        recipesListAdapter.setOnItemClickListener(object : RecipesListAdapter.OnItemClickListener {
+        recipesListAdapter?.setOnItemClickListener(object : RecipesListAdapter.OnItemClickListener {
             override fun onItemClick(recipeId: Int) {
                 openRecipeByRecipeId(recipeId)
             }

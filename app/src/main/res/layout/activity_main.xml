@@ -49,7 +49,7 @@
             android:backgroundTint="@color/favorites_btn_color"
             android:drawablePadding="10dp"
             android:text="@string/title_favorites"
-            app:icon="@drawable/ic_favorites_heart"
+            app:icon="@drawable/ic_favorites_empty"
             app:iconGravity="textEnd" />
     </LinearLayout>
 

@@ -241,7 +241,7 @@ object STUB {
         return burgerRecipes
     }
 
-    fun getRecipesByCategoryId(categoryId: String): List<Recipe> {
+    fun getRecipesByCategoryId(categoryId: Int): List<Recipe> {
         return if (categoryId.toInt() == 0) {
             burgerRecipes
         } else listOf()
