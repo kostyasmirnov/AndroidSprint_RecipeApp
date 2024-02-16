@@ -59,6 +59,11 @@
         <item name="android:thumb">@drawable/shape_seekbar_thumb</item>
         <item name="android:max">5</item>
         <item name="android:min">1</item>
+        <item name="android:thumbOffset">@dimen/zero_padding</item>
     </style>
 
+    <style name="StyleFavoritesButton">
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+    </style>
 </resources>
