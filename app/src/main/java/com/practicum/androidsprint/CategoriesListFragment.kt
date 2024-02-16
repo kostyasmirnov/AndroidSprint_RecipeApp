@@ -48,9 +48,8 @@ class CategoriesListFragment : Fragment() {
     fun openRecipesByCategoryId(categoryId: Int) {
         val category = categories.find { it.id == categoryId }
         if (category != null) {
-            val categories = STUB.getCategories().firstOrNull { it.id == categoryId }
-            val categoryName: String? = categories?.title
-            val categoryImageUrl: String? = categories?.imageUrl
+            val categoryName: String = category.title
+            val categoryImageUrl: String = category.imageUrl
             val bundle = bundleOf(
                 Constants.ARG_RECIPE_ID to categoryId,
                 Constants.ARG_RECIPE_NAME to categoryName,
