@@ -22,10 +22,10 @@ class IngredientsAdapter(
         val ingredientMeasure: TextView = view.findViewById(R.id.tvRecipeIngredientMeasure)
     }
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.item_ingredient, viewGroup, false)
-        return ViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val itemView =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_ingredient, parent, false)
+        return ViewHolder(itemView)
     }
 
     @SuppressLint("SetTextI18n")

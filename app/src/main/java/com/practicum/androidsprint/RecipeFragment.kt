@@ -51,8 +51,8 @@ class RecipeFragment : Fragment(R.layout.fragment_recipe) {
     private fun setupUI(recipe: Recipe?) {
         recipe?.let {
             binding.tvRecipeHeaderText.text = it.title
-            val inputStream: InputStream? =
-                it.imageUrl.let { imgUrl -> context?.assets?.open(imgUrl) }
+            val inputStream: InputStream =
+                it.imageUrl.let { imgUrl -> binding.root.context.assets.open(imgUrl) }
             val drawable = Drawable.createFromStream(inputStream, null)
             binding.ivRecipeHeaderImg.setImageDrawable(drawable)
         }

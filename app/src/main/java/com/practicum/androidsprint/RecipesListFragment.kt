@@ -51,7 +51,8 @@ class RecipesListFragment : Fragment(R.layout.fragment_recipes_list) {
     }
 
     private fun initUI() {
-        val inputStream: InputStream? = recipeImageUrl?.let { this.context?.assets?.open(it) }
+        val inputStream: InputStream? =
+            recipeImageUrl?.let { binding.ivRecipesListHeaderImg.context.assets.open(it) }
         val drawable = Drawable.createFromStream(inputStream, null)
         binding.ivRecipesListHeaderImg.setImageDrawable(drawable)
         binding.tvRecipesListHeaderText.text = recipeName
@@ -66,7 +67,8 @@ class RecipesListFragment : Fragment(R.layout.fragment_recipes_list) {
         recipesListAdapter?.setOnItemClickListener(object : RecipesListAdapter.OnItemClickListener {
             override fun onItemClick(recipeId: Int) {
                 openRecipeByRecipeId(recipeId)
-            }})
+            }
+        })
     }
 
     fun openRecipeByRecipeId(recipeId: Int) {
