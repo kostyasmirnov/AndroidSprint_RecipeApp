@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.practicum.androidsprint.databinding.ItemIngredientBinding
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -16,16 +17,15 @@ class IngredientsAdapter(
 
     private var quantity = 1
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val ingredientName: TextView = view.findViewById(R.id.tvRecipeIngredientName)
-        val ingredientCount: TextView = view.findViewById(R.id.tvRecipeIngredientCount)
-        val ingredientMeasure: TextView = view.findViewById(R.id.tvRecipeIngredientMeasure)
+    class ViewHolder(val binding: ItemIngredientBinding) : RecyclerView.ViewHolder(binding.root) {
+        val ingredientName: TextView = binding.tvRecipeIngredientName
+        val ingredientCount: TextView = binding.tvRecipeIngredientCount
+        val ingredientMeasure: TextView = binding.tvRecipeIngredientMeasure
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_ingredient, parent, false)
-        return ViewHolder(itemView)
+        val binding = ItemIngredientBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ViewHolder(binding)
     }
 
     @SuppressLint("SetTextI18n")
@@ -42,7 +42,6 @@ class IngredientsAdapter(
         }
     }
 
-
     override fun getItemCount() = dataSet.size
 
     @SuppressLint("NotifyDataSetChanged")
@@ -51,5 +50,4 @@ class IngredientsAdapter(
         quantity = progress
         notifyDataSetChanged()
     }
-
 }
