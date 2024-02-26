@@ -61,7 +61,7 @@ class RecipesListFragment : Fragment(R.layout.fragment_recipes_list) {
     private fun initRecycler() {
         val recipesListAdapter = arguments?.getInt(ARG_CATEGORY_ID)
             ?.let { STUB.getRecipesByCategoryId(it) }
-            ?.let { RecipesListAdapter(it, fragment = this) }
+            ?.let { RecipesListAdapter(it, context = this) }
         val recyclerView = binding.rvRecipes
         recyclerView.adapter = recipesListAdapter
         recipesListAdapter?.setOnItemClickListener(object : RecipesListAdapter.OnItemClickListener {

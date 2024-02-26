@@ -7,12 +7,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.practicum.androidsprint.databinding.ItemRecipeBinding
 import java.io.InputStream
-
 class RecipesListAdapter(
     private val dataSet: List<Recipe>,
-    private val fragment: RecipesListFragment,
-) :
-    RecyclerView.Adapter<RecipesListAdapter.ViewHolder>() {
+    private val context: RecipesListFragment
+) : RecyclerView.Adapter<RecipesListAdapter.ViewHolder>() {
     private var itemClickListener: OnItemClickListener? = null
 
     interface OnItemClickListener {
@@ -23,7 +21,7 @@ class RecipesListAdapter(
         itemClickListener = listener
     }
 
-    class ViewHolder(val binding: ItemRecipeBinding) : RecyclerView.ViewHolder(binding.root) {}
+    class ViewHolder(val binding: ItemRecipeBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemRecipeBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
@@ -34,7 +32,7 @@ class RecipesListAdapter(
         viewHolder.binding.apply {
             tvRecipeName.text = dataSet[position].title
             try {
-                val inputStream: InputStream? = fragment.context?.assets?.open(dataSet[position].imageUrl)
+                val inputStream: InputStream? = context.requireContext().assets.open(dataSet[position].imageUrl)
                 val drawable = Drawable.createFromStream(inputStream, null)
                 ivRecipeImage.setImageDrawable(drawable)
             } catch (e: Exception) {
