@@ -16,10 +16,10 @@ class MethodAdapter(
         val methodNumber: TextView = view.findViewById(R.id.tvRecipeMethodDescription)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_ingredient, parent, true)
-        return ViewHolder(itemView)
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(viewGroup.context)
+            .inflate(R.layout.item_method, viewGroup, false)
+        return ViewHolder(view)
     }
 
     @SuppressLint("SetTextI18n")
