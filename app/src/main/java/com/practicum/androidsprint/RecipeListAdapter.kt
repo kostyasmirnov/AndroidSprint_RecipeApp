@@ -32,7 +32,7 @@ class RecipesListAdapter(
         viewHolder.binding.apply {
             tvRecipeName.text = dataSet[position].title
             try {
-                val inputStream: InputStream? = context.requireContext().assets.open(dataSet[position].imageUrl)
+                val inputStream: InputStream = context.requireContext().assets.open(dataSet[position].imageUrl)
                 val drawable = Drawable.createFromStream(inputStream, null)
                 ivRecipeImage.setImageDrawable(drawable)
             } catch (e: Exception) {

@@ -39,7 +39,7 @@ class CategoriesListAdapter(
         with(viewHolder) {
             val categoryTitle = binding.tvRecipeName
             val categoryDescription = binding.tvCategoryDescription
-            val inputStream: InputStream? = context.context?.assets?.open(dataSet[position].imageUrl)
+            val inputStream: InputStream = itemView.context.assets.open(dataSet[position].imageUrl)
             val drawable = Drawable.createFromStream(inputStream, null)
 
             categoryTitle.text = dataSet[position].title
@@ -61,4 +61,3 @@ class CategoriesListAdapter(
 
     override fun getItemCount() = dataSet.size
 }
-

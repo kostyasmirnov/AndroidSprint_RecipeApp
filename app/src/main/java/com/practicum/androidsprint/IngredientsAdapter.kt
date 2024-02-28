@@ -17,7 +17,7 @@ class IngredientsAdapter(
 
     private var quantity = 1
 
-    class ViewHolder(val binding: ItemIngredientBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(private val binding: ItemIngredientBinding) : RecyclerView.ViewHolder(binding.root) {
         val ingredientName: TextView = binding.tvRecipeIngredientName
         val ingredientCount: TextView = binding.tvRecipeIngredientCount
         val ingredientMeasure: TextView = binding.tvRecipeIngredientMeasure
