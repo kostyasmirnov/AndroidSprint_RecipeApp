@@ -9,7 +9,6 @@ import com.practicum.androidsprint.databinding.ItemRecipeBinding
 import java.io.InputStream
 class RecipesListAdapter(
     private val dataSet: List<Recipe>,
-    private val context: RecipesListFragment
 ) : RecyclerView.Adapter<RecipesListAdapter.ViewHolder>() {
     private var itemClickListener: OnItemClickListener? = null
 
@@ -29,16 +28,16 @@ class RecipesListAdapter(
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.binding.apply {
-            tvRecipeName.text = dataSet[position].title
+        with(viewHolder) {
+            binding.tvRecipeName.text = dataSet[position].title
             try {
-                val inputStream: InputStream = context.requireContext().assets.open(dataSet[position].imageUrl)
+                val inputStream: InputStream = itemView.context.assets.open(dataSet[position].imageUrl)
                 val drawable = Drawable.createFromStream(inputStream, null)
-                ivRecipeImage.setImageDrawable(drawable)
+                binding.ivRecipeImage.setImageDrawable(drawable)
             } catch (e: Exception) {
                 Log.e("err", "onBindViewHolder: ${e.printStackTrace()}")
             }
-            root.setOnClickListener {
+            binding.root.setOnClickListener {
                 itemClickListener?.onItemClick(dataSet[position].id)
             }
         }

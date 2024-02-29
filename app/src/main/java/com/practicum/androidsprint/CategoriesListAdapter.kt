@@ -1,23 +1,16 @@
 package com.practicum.androidsprint
 
-import android.content.res.Resources
 import android.graphics.drawable.Drawable
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.practicum.androidsprint.databinding.ItemCategoryBinding
 import java.io.InputStream
 
 class CategoriesListAdapter(
     private val dataSet: List<Category>,
-    private val context: CategoriesListFragment,
 ) : RecyclerView.Adapter<CategoriesListAdapter.ViewHolder>() {
-
     private var itemClickListener: OnItemClickListener? = null
 
     interface OnItemClickListener {
