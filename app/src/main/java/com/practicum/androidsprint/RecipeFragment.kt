@@ -1,5 +1,6 @@
 package com.practicum.androidsprint
 
+import android.content.Context
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
@@ -49,25 +50,32 @@ class RecipeFragment : Fragment(R.layout.fragment_recipe) {
     }
 
     private fun setupUI(recipe: Recipe?) {
-        recipe?.let {
+        recipe?.let { it ->
             binding.tvRecipeHeaderText.text = it.title
             val inputStream: InputStream =
                 it.imageUrl.let { imgUrl -> binding.root.context.assets.open(imgUrl) }
             val drawable = Drawable.createFromStream(inputStream, null)
             binding.ivRecipeHeaderImg.setImageDrawable(drawable)
-        }
 
-        val favoritesButton: ImageButton = binding.ibFavorites
-        var isImageFirst = true
-        favoritesButton.setBackgroundResource(R.drawable.ic_favorites_empty)
+            val favoritesSet = getFavorites()
+            var isFavorite = favoritesSet.contains(recipe.id.toString())
 
-        favoritesButton.setOnClickListener {
-            if (isImageFirst) {
-                favoritesButton.setBackgroundResource(R.drawable.ic_favorites)
-            } else {
-                favoritesButton.setBackgroundResource(R.drawable.ic_favorites_empty)
+            val favoriteIconRes =
+                if (isFavorite) R.drawable.ic_favorites else R.drawable.ic_favorites_empty
+
+            val favoritesButton: ImageButton = binding.ibFavorites
+            favoritesButton.setBackgroundResource(favoriteIconRes)
+            favoritesButton.setOnClickListener {
+                isFavorite = if (isFavorite) {
+                    saveFavorites(getFavorites().apply { remove(recipe.id.toString()) })
+                    favoritesButton.setBackgroundResource(R.drawable.ic_favorites_empty)
+                    false
+                } else {
+                    saveFavorites(getFavorites().apply { add(recipe.id.toString()) })
+                    favoritesButton.setBackgroundResource(R.drawable.ic_favorites)
+                    true
+                }
             }
-            isImageFirst = !isImageFirst
         }
     }
 
@@ -105,5 +113,24 @@ class RecipeFragment : Fragment(R.layout.fragment_recipe) {
         val dividerItemDecoration = DividerItemDecoration(context, RecyclerView.VERTICAL)
         dividerItemDecoration.setLastItemDecorated(false)
         return dividerItemDecoration
+    }
+
+    private fun saveFavorites(recipesIds: Set<String>) {
+        val sharedPrefs =
+            requireContext().getSharedPreferences(
+                Constants.SHARED_PREFS_RECIPES,
+                Context.MODE_PRIVATE
+            )
+        with(sharedPrefs.edit()) {
+            putStringSet(Constants.SHARED_PREFS_RECIPES_DATA, recipesIds)
+            apply()
+        }
+    }
+
+    private fun getFavorites(): MutableSet<String> {
+        val sharedPrefs =
+            activity?.getSharedPreferences(Constants.SHARED_PREFS_RECIPES, Context.MODE_PRIVATE)
+        val favoritesRecipe = sharedPrefs?.getStringSet(Constants.SHARED_PREFS_RECIPES_DATA, null)
+        return favoritesRecipe?.let { HashSet(it) } ?: hashSetOf()
     }
 }
