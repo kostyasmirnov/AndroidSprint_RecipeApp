@@ -9,6 +9,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
+import com.practicum.androidsprint.Constants.Companion.ARG_CATEGORY_ID
 import com.practicum.androidsprint.databinding.FragmentRecipesListBinding
 import java.io.InputStream
 import com.practicum.androidsprint.Constants.Companion.ARG_RECIPE
@@ -50,22 +51,24 @@ class RecipesListFragment : Fragment(R.layout.fragment_recipes_list) {
     }
 
     private fun initUI() {
-        val inputStream: InputStream? = recipeImageUrl?.let { this.context?.assets?.open(it) }
+        val inputStream: InputStream? =
+            recipeImageUrl?.let { binding.ivRecipesListHeaderImg.context.assets.open(it) }
         val drawable = Drawable.createFromStream(inputStream, null)
         binding.ivRecipesListHeaderImg.setImageDrawable(drawable)
         binding.tvRecipesListHeaderText.text = recipeName
     }
 
     private fun initRecycler() {
-        val recipesListAdapter = RecipesListAdapter(STUB.getBurgerRecipes(), fragment = this)
+        val recipesListAdapter = arguments?.getInt(ARG_CATEGORY_ID)
+            ?.let { STUB.getRecipesByCategoryId(it) }
+            ?.let { RecipesListAdapter(it) }
         val recyclerView = binding.rvRecipes
         recyclerView.adapter = recipesListAdapter
-        recipesListAdapter.setOnItemClickListener(object : RecipesListAdapter.OnItemClickListener {
+        recipesListAdapter?.setOnItemClickListener(object : RecipesListAdapter.OnItemClickListener {
             override fun onItemClick(recipeId: Int) {
                 openRecipeByRecipeId(recipeId)
             }
-        }
-        )
+        })
     }
 
     fun openRecipeByRecipeId(recipeId: Int) {

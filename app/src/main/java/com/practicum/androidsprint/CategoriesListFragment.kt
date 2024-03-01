@@ -12,9 +12,9 @@ import com.practicum.androidsprint.databinding.FragmentListCategoriesBinding
 
 class CategoriesListFragment : Fragment() {
 
-    private var _binding: FragmentListCategoriesBinding? = null
-
-    private val binding get() = _binding!!
+    private val binding: FragmentListCategoriesBinding by lazy {
+        FragmentListCategoriesBinding.inflate(layoutInflater)
+    }
 
     private val categories: List<Category>
         get() = STUB.getCategories()
@@ -23,18 +23,16 @@ class CategoriesListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentListCategoriesBinding.inflate(inflater, container, false)
-        initRecycler()
         return binding.root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initRecycler()
     }
 
     private fun initRecycler() {
-        val categoriesListAdapter = CategoriesListAdapter(categories, context = this)
+        val categoriesListAdapter = CategoriesListAdapter(STUB.getCategories())
         val recyclerView = binding.rvCategories
         recyclerView.adapter = categoriesListAdapter
         categoriesListAdapter.setOnItemClickListener(object :

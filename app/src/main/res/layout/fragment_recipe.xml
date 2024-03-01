@@ -15,7 +15,7 @@
         <ImageView
             android:id="@+id/ivRecipeHeaderImg"
             android:layout_width="match_parent"
-            android:layout_height="224dp"
+            android:layout_height="@dimen/top_screen_sheet"
             android:contentDescription="@string/image_category_description"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
@@ -29,16 +29,32 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/main_padding"
+            android:layout_marginEnd="@dimen/main_padding"
             android:layout_marginBottom="@dimen/main_padding"
             android:background="@drawable/shape_header_rounded_corners"
             android:gravity="start"
+            app:layout_constrainedWidth="true"
             app:layout_constraintBottom_toBottomOf="@+id/ivRecipeHeaderImg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            tools:text="Бургеры с грибами и сыром" />
+            tools:text="Бургеры с грибами и сыром " />
+
+        <ImageButton
+            android:id="@+id/ibFavorites"
+            style="@style/StyleFavoritesButton"
+            android:layout_width="@dimen/favorites_icon_margin"
+            android:layout_height="@dimen/favorites_icon_margin"
+            android:layout_marginTop="@dimen/main_padding"
+            android:layout_marginEnd="@dimen/main_padding"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@drawable/ic_favorites_empty" />
 
         <LinearLayout
             android:id="@+id/recipeLinearLayout"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/zero_padding"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
@@ -93,7 +109,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/ingredient_padding_half"
-                    android:thumbOffset="0dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
