@@ -18,7 +18,6 @@ class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
         FragmentFavoritesBinding.inflate(layoutInflater)
     }
 
-    private var recipeID: String? = null
     private var recipeTitle: String? = null
     private var recipeImageUrl: String? = null
 
@@ -33,19 +32,10 @@ class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initUI()
-        initArgs()
-    }
-
-    private fun initArgs() {
-        arguments.let {
-            recipeID = Constants.ARG_CATEGORY_ID
-            recipeTitle = Constants.ARG_CATEGORY_NAME
-            recipeImageUrl = Constants.ARG_CATEGORY_IMAGE_URL
-        }
     }
 
     private fun initUI() {
-        val favoriteRecipeIdsStringSet = getFavorites()
+        val favoriteRecipeIdsStringSet = getFavoriteRecipeIds()
         if (favoriteRecipeIdsStringSet.isEmpty()) {
             binding.tvNoData.visibility = View.VISIBLE
             binding.rvFavoriteRecipes.visibility = View.GONE
@@ -88,7 +78,7 @@ class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
         }
     }
 
-    private fun getFavorites(): Set<String> {
+    private fun getFavoriteRecipeIds(): Set<String> {
         val sharedPrefs =
             activity?.getSharedPreferences(Constants.SHARED_PREFS_RECIPES, Context.MODE_PRIVATE)
         return sharedPrefs?.getStringSet(Constants.SHARED_PREFS_RECIPES_DATA, setOf()) ?: setOf()
