@@ -19,7 +19,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/burger" />
+            tools:src="@drawable/burger"
+            android:contentDescription="@string/image_category_description" />
 
         <TextView
             android:id="@+id/tvRecipesListHeaderText"

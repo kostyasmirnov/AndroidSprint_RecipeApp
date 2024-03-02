@@ -50,7 +50,7 @@ class RecipeFragment : Fragment(R.layout.fragment_recipe) {
     }
 
     private fun setupUI(recipe: Recipe?) {
-        recipe?.let { it ->
+        recipe?.let {
             binding.tvRecipeHeaderText.text = it.title
             val inputStream: InputStream =
                 it.imageUrl.let { imgUrl -> binding.root.context.assets.open(imgUrl) }
