@@ -1,6 +1,7 @@
-package com.practicum.androidsprint
+package com.practicum.androidsprint.model
 
 import android.os.Parcelable
+import com.practicum.androidsprint.model.Ingredient
 import kotlinx.parcelize.Parcelize
 
 @Parcelize

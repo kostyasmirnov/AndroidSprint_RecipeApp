@@ -1,4 +1,4 @@
-package com.practicum.androidsprint
+package com.practicum.androidsprint.data
 
 class Constants {
     companion object {

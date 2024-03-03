@@ -1,4 +1,4 @@
-package com.practicum.androidsprint
+package com.practicum.androidsprint.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

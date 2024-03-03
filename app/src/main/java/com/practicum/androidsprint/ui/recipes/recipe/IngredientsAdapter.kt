@@ -1,13 +1,13 @@
-package com.practicum.androidsprint
+package com.practicum.androidsprint.ui.recipes.recipe
 
 import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.practicum.androidsprint.databinding.ItemIngredientBinding
+import com.practicum.androidsprint.model.Ingredient
 import java.math.BigDecimal
 import java.math.RoundingMode
 

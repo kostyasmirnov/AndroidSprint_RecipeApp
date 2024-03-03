@@ -1,11 +1,13 @@
-package com.practicum.androidsprint
+package com.practicum.androidsprint.ui.categories
 
 import android.graphics.drawable.Drawable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.practicum.androidsprint.R
 import com.practicum.androidsprint.databinding.ItemCategoryBinding
+import com.practicum.androidsprint.model.Category
 import java.io.InputStream
 
 class CategoriesListAdapter(

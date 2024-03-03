@@ -1,12 +1,12 @@
-package com.practicum.androidsprint
+package com.practicum.androidsprint.ui.recipes.recipe
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.practicum.androidsprint.R
 import com.practicum.androidsprint.databinding.ItemMethodBinding
 
 class MethodAdapter(

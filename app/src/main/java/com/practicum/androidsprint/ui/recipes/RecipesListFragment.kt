@@ -1,4 +1,4 @@
-package com.practicum.androidsprint
+package com.practicum.androidsprint.ui.recipes
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
@@ -9,13 +9,17 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
-import com.practicum.androidsprint.Constants.Companion.ARG_CATEGORY_ID
+import com.practicum.androidsprint.R
+import com.practicum.androidsprint.ui.recipes.recipesList.RecipesListAdapter
+import com.practicum.androidsprint.data.STUB
+import com.practicum.androidsprint.data.Constants.Companion.ARG_CATEGORY_ID
 import com.practicum.androidsprint.databinding.FragmentRecipesListBinding
 import java.io.InputStream
-import com.practicum.androidsprint.Constants.Companion.ARG_RECIPE
-import com.practicum.androidsprint.Constants.Companion.ARG_RECIPE_ID
-import com.practicum.androidsprint.Constants.Companion.ARG_RECIPE_IMAGE_URL
-import com.practicum.androidsprint.Constants.Companion.ARG_RECIPE_NAME
+import com.practicum.androidsprint.data.Constants.Companion.ARG_RECIPE
+import com.practicum.androidsprint.data.Constants.Companion.ARG_RECIPE_ID
+import com.practicum.androidsprint.data.Constants.Companion.ARG_RECIPE_IMAGE_URL
+import com.practicum.androidsprint.data.Constants.Companion.ARG_RECIPE_NAME
+import com.practicum.androidsprint.ui.recipes.recipe.RecipeFragment
 
 class RecipesListFragment : Fragment(R.layout.fragment_recipes_list) {
 
