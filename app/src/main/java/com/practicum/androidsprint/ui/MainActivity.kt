@@ -1,12 +1,13 @@
-package com.practicum.androidsprint
+package com.practicum.androidsprint.ui
 
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
+import com.practicum.androidsprint.R
 import com.practicum.androidsprint.databinding.ActivityMainBinding
+import com.practicum.androidsprint.ui.categories.CategoriesListFragment
+import com.practicum.androidsprint.ui.recipes.favorites.FavoritesFragment
 
 class MainActivity : AppCompatActivity() {
 

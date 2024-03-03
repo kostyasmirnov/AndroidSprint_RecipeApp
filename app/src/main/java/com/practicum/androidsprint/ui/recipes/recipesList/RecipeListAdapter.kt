@@ -1,4 +1,4 @@
-package com.practicum.androidsprint
+package com.practicum.androidsprint.ui.recipes.recipesList
 
 import android.graphics.drawable.Drawable
 import android.util.Log
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.practicum.androidsprint.databinding.ItemRecipeBinding
+import com.practicum.androidsprint.model.Recipe
 import java.io.InputStream
 class RecipesListAdapter(
     private val dataSet: List<Recipe>,

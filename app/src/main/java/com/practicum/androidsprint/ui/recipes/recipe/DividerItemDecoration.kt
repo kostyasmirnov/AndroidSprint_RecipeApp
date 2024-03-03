@@ -1,9 +1,10 @@
-package com.practicum.androidsprint
+package com.practicum.androidsprint.ui.recipes.recipe
 
 import android.content.Context
 import android.graphics.Canvas
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
+import com.practicum.androidsprint.R
 
 class DividerItemDecoration(
     context: Context?,

@@ -1,4 +1,4 @@
-package com.practicum.androidsprint
+package com.practicum.androidsprint.ui.recipes.recipe
 
 import android.widget.SeekBar
 

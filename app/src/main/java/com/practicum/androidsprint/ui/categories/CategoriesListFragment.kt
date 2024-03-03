@@ -1,4 +1,4 @@
-package com.practicum.androidsprint
+package com.practicum.androidsprint.ui.categories
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.core.os.bundleOf
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
+import com.practicum.androidsprint.R
+import com.practicum.androidsprint.data.STUB
 import com.practicum.androidsprint.databinding.FragmentListCategoriesBinding
+import com.practicum.androidsprint.model.Category
+import com.practicum.androidsprint.data.Constants
+import com.practicum.androidsprint.ui.recipes.RecipesListFragment
 
 class CategoriesListFragment : Fragment() {
 

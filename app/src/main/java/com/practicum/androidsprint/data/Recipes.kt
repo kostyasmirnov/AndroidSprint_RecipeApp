@@ -1,4 +1,8 @@
-package com.practicum.androidsprint
+package com.practicum.androidsprint.data
+
+import com.practicum.androidsprint.model.Ingredient
+import com.practicum.androidsprint.model.Recipe
+import com.practicum.androidsprint.model.Category
 
 object STUB {
 

@@ -1,4 +1,4 @@
-package com.practicum.androidsprint
+package com.practicum.androidsprint.ui.recipes.recipe
 
 import android.content.Context
 import android.graphics.drawable.Drawable
@@ -12,8 +12,11 @@ import android.widget.SeekBar
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.practicum.androidsprint.Constants.Companion.ARG_RECIPE
+import com.practicum.androidsprint.R
+import com.practicum.androidsprint.model.Recipe
+import com.practicum.androidsprint.data.Constants.Companion.ARG_RECIPE
 import com.practicum.androidsprint.databinding.FragmentRecipeBinding
+import com.practicum.androidsprint.data.Constants
 import java.io.InputStream
 
 class RecipeFragment : Fragment(R.layout.fragment_recipe) {

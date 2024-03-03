@@ -1,4 +1,4 @@
-package com.practicum.androidsprint
+package com.practicum.androidsprint.ui.recipes.favorites
 
 import android.content.Context
 import android.os.Bundle
@@ -10,7 +10,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.practicum.androidsprint.R
+import com.practicum.androidsprint.ui.recipes.recipesList.RecipesListAdapter
+import com.practicum.androidsprint.data.STUB
 import com.practicum.androidsprint.databinding.FragmentFavoritesBinding
+import com.practicum.androidsprint.data.Constants
+import com.practicum.androidsprint.ui.recipes.recipe.RecipeFragment
 
 class FavoritesFragment : Fragment(R.layout.fragment_favorites) {
 
