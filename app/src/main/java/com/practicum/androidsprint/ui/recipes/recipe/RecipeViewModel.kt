@@ -9,10 +9,9 @@ data class RecipeUiState(
     val portionsCount: Int,
 )
 
-class RecipeViewModel(
+class RecipeViewModel (
     val recipe: Recipe? = null,
     val recipeDrawable: Drawable? = null,
-    val favoriteRecipe: Boolean = false,
-    val portionsCount: Int? = null,
-    val ingredientsCount: Int? = null,
+    val portionsCount: Int? = 1,
+    var isFavorite: Boolean = false,
 ) : ViewModel()
