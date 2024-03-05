@@ -13,7 +13,7 @@ import com.practicum.androidsprint.data.STUB
 import com.practicum.androidsprint.databinding.FragmentListCategoriesBinding
 import com.practicum.androidsprint.model.Category
 import com.practicum.androidsprint.data.Constants
-import com.practicum.androidsprint.ui.recipes.RecipesListFragment
+import com.practicum.androidsprint.ui.recipes.recipesList.RecipesListFragment
 
 class CategoriesListFragment : Fragment() {
 
