@@ -4,12 +4,14 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.SeekBar
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.practicum.androidsprint.R
@@ -26,6 +28,7 @@ class RecipeFragment : Fragment(R.layout.fragment_recipe) {
     private lateinit var seekBar: SeekBar
     private var ingredientsAdapter: IngredientsAdapter? = null
     private var sizeInDp: Int = 0
+    private val recipe: RecipeViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,6 +45,10 @@ class RecipeFragment : Fragment(R.layout.fragment_recipe) {
         setupUI(recipeParcelable)
         initRecycler(recipeParcelable)
         sizeInDp = resources.getDimensionPixelSize(R.dimen.main_padding)
+
+        recipe.recipeState.observe(viewLifecycleOwner) {
+            Log.i("!!!", recipe.recipeState.toString())
+        }
     }
 
     private fun getRecipeFromArguments(): Recipe? {

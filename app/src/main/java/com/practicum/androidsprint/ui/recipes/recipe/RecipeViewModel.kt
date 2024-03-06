@@ -1,6 +1,8 @@
 package com.practicum.androidsprint.ui.recipes.recipe
 
 import android.graphics.drawable.Drawable
+import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.practicum.androidsprint.model.Recipe
@@ -14,5 +16,10 @@ data class RecipeUiState(
 
 class RecipeViewModel: ViewModel() {
     private val _recipeState = MutableLiveData<RecipeUiState>()
-    val recipeState: MutableLiveData<RecipeUiState> get() = _recipeState
+    val recipeState: LiveData<RecipeUiState>  = _recipeState
+
+    init {
+        _recipeState.value = RecipeUiState(isFavorite = false)
+        Log.i("!!!", _recipeState.value.toString())
+    }
 }
