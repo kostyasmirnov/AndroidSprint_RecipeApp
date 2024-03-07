@@ -47,7 +47,7 @@ class RecipeFragment : Fragment(R.layout.fragment_recipe) {
         sizeInDp = resources.getDimensionPixelSize(R.dimen.main_padding)
 
         recipe.recipeState.observe(viewLifecycleOwner) {
-            Log.i("!!!", recipe.recipeState.toString())
+            Log.i("RecipeState", it.isFavorite.toString())
         }
     }
 
