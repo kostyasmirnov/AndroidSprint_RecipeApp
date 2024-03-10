@@ -62,7 +62,7 @@ class RecipeFragment : Fragment(R.layout.fragment_recipe) {
             favoritesButton.setBackgroundResource(favoritesIconRes)
 
             favoritesButton.setOnClickListener {
-                this.viewModel.onFavoritesClicked()
+                viewModel.onFavoritesClicked()
             }
             initRecycler(recipe)
         }
