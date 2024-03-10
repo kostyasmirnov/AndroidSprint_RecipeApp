@@ -65,9 +65,4 @@ class RecipeViewModel(private val application: Application) : AndroidViewModel(a
             apply()
         }
     }
-
-    init {
-        _recipeState.value = RecipeUiState(isFavorite = false)
-        Log.i("!!!", _recipeState.value.toString())
-    }
 }
