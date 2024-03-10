@@ -24,6 +24,7 @@ class RecipeViewModel(private val application: Application) : AndroidViewModel(a
     val recipeState: LiveData<RecipeUiState>  = _recipeState
 
     fun loadRecipe(recipeId: Int) {
+        // TODO: Load recipe from network
         val recipe = STUB.getRecipeById(recipeId)
         _recipeState.value = RecipeUiState().copy(
             recipe = recipe,
