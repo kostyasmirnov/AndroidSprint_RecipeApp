@@ -7,7 +7,6 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.practicum.androidsprint.data.Constants
 import com.practicum.androidsprint.data.STUB
 import com.practicum.androidsprint.model.Recipe

@@ -1,24 +1,18 @@
 package com.practicum.androidsprint.ui.recipes.recipe
 
-import android.content.Context
 import android.graphics.drawable.Drawable
-import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
-import android.widget.SeekBar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.practicum.androidsprint.R
 import com.practicum.androidsprint.model.Recipe
-import com.practicum.androidsprint.data.Constants.Companion.ARG_RECIPE
 import com.practicum.androidsprint.databinding.FragmentRecipeBinding
-import com.practicum.androidsprint.data.Constants
 import com.practicum.androidsprint.data.Constants.Companion.ARG_RECIPE_ID
 import java.io.InputStream
 
