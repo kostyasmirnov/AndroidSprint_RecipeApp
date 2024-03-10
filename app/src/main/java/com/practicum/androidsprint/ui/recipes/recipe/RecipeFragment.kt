@@ -22,7 +22,9 @@ import com.practicum.androidsprint.data.Constants
 import java.io.InputStream
 
 class RecipeFragment : Fragment(R.layout.fragment_recipe) {
-    private lateinit var binding: FragmentRecipeBinding
+    private val binding by lazy {
+        FragmentRecipeBinding.inflate(layoutInflater)
+    }
     private lateinit var seekBar: SeekBar
     private var ingredientsAdapter: IngredientsAdapter? = null
     private var sizeInDp: Int = 0
@@ -33,7 +35,6 @@ class RecipeFragment : Fragment(R.layout.fragment_recipe) {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentRecipeBinding.inflate(inflater, container, false)
         return binding.root
     }
 
