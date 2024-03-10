@@ -25,7 +25,6 @@ class RecipeFragment : Fragment(R.layout.fragment_recipe) {
     private val binding by lazy {
         FragmentRecipeBinding.inflate(layoutInflater)
     }
-    private lateinit var seekBar: SeekBar
     private var ingredientsAdapter: IngredientsAdapter? = null
     private var sizeInDp: Int = 0
     private val viewModel: RecipeViewModel by viewModels()
@@ -84,9 +83,8 @@ class RecipeFragment : Fragment(R.layout.fragment_recipe) {
                 ingredientsAdapter?.updateIngredients(progress)
             },
         )
-        seekBar = binding.sbPortionsCount
-        seekBar.setPadding(sizeInDp, 0, sizeInDp, 0)
-        seekBar.setOnSeekBarChangeListener(seekBarListener)
+        binding.sbPortionsCount.setPadding(sizeInDp, 0, sizeInDp, 0)
+        binding.sbPortionsCount.setOnSeekBarChangeListener(seekBarListener)
         binding.rvIngredients.adapter = ingredientsAdapter
 
         binding.rvIngredients.apply {
