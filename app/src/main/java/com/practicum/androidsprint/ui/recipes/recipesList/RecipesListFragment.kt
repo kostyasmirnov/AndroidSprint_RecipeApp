@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
-import androidx.fragment.app.replace
 import com.practicum.androidsprint.R
 import com.practicum.androidsprint.data.STUB
 import com.practicum.androidsprint.data.Constants.Companion.ARG_CATEGORY_ID
@@ -76,17 +75,15 @@ class RecipesListFragment : Fragment(R.layout.fragment_recipes_list) {
 
     fun openRecipeByRecipeId(recipeId: Int) {
         val recipe = STUB.getRecipeById(recipeId)
-        val bundle = bundleOf(
-            ARG_RECIPE_ID to recipeId,
-            ARG_RECIPE_NAME to recipeName,
-            ARG_RECIPE_IMAGE_URL to recipeImageUrl
-        )
-
-        bundle.putParcelable(ARG_RECIPE, recipe)
 
         parentFragmentManager.commit {
             setReorderingAllowed(true)
-            replace<RecipeFragment>(R.id.mainContainer, args = bundle)
+            replace(R.id.mainContainer, RecipeFragment().apply {
+                arguments = bundleOf(
+                    ARG_RECIPE_ID to recipeId,
+                    ARG_RECIPE to recipe
+                )
+            })
             addToBackStack(null)
         }
     }

@@ -19,6 +19,7 @@ import com.practicum.androidsprint.model.Recipe
 import com.practicum.androidsprint.data.Constants.Companion.ARG_RECIPE
 import com.practicum.androidsprint.databinding.FragmentRecipeBinding
 import com.practicum.androidsprint.data.Constants
+import com.practicum.androidsprint.data.Constants.Companion.ARG_RECIPE_ID
 import java.io.InputStream
 
 class RecipeFragment : Fragment(R.layout.fragment_recipe) {
@@ -39,7 +40,7 @@ class RecipeFragment : Fragment(R.layout.fragment_recipe) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        arguments?.getInt(ARG_RECIPE)?.let { viewModel.loadRecipe(it) }
+        arguments?.getInt(ARG_RECIPE_ID)?.let { viewModel.loadRecipe(it) }
         setupUI()
     }
 
